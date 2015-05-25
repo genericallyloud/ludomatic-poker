@@ -1,0 +1,32 @@
+mixin corner(c,suit)
+  .corner(class="corner-#{c}")
+    .value= value
+    .suit
+      +includeSvg(suit)
+
+mixin includeSvg(suit)
+  if suit=='H'
+    include heart.svg
+  else if suit=='S'
+    include spade.svg
+  else if suit=='C'
+    include club.svg
+  else
+    include diamond.svg
+    
+mixin center(suit,value)
+  if value=='J' || value=='Q' || value=='K'
+    .face-card
+  else
+    - var max = value=='A'?1:parseInt(value)
+    - var n = 0;
+    while n < max
+      .suit(class="num-#{++n}")
+        +includeSvg(suit)
+
+.card(class=["suit-#{suit}","value-#{value}"])
+  +corner("tl", suit)
+  +corner("br", suit)
+  .center
+    +center(suit,value)
+      
