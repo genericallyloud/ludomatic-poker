@@ -1,6 +1,5 @@
-.topLeft(top,left){
-  top:top;
-  left:left;
+.upside-down{
+  -webkit-transform: rotate(180deg);
 }
 
 .card{
@@ -18,6 +17,9 @@
   text-align: center;
   .value{
     font-size: 24pt;
+    .value-10 &{
+      -webkit-transform: scaleX(0.75);
+    }
   }
   .suit svg{
     width: 0.15in;
@@ -31,15 +33,14 @@
 .corner-br{
   bottom:0.1in;
   right:0.05in;
-  -webkit-transform: rotate(180deg);
+  .upside-down();
 }
 .center{
   position: absolute;
-  top:0.2in;
-  left:0.4in;
-  right:0.4in;
-  bottom:0.2in;
-  border: 1px solid black;
+  top:0.4in;
+  left:0.5in;
+  right:0.5in;
+  bottom:0.4in;
 
   .suit{
     position: absolute;
@@ -50,41 +51,186 @@
   }
 }
 
+
+/**
+ * Enumerate all of the reusable positions that a card suit can be
+ */
+.pos-center{
+  left:50%;
+  margin-left:-20px;
+}
+.pos-middle{
+  top:50%;
+  margin-top:-20px;
+}
+.pos-vert25{
+  top:25%;
+  margin-top:10px
+}
+.pos-vert75{
+  bottom:25%;
+  margin-bottom:10px;
+  .upside-down();
+}
+.pos-cm{// center/middle
+  .pos-center();
+  .pos-middle();
+}
+.pos-ct{// center/top
+  top:0;
+  .pos-center();
+}
+.pos-cb{// center/bottom
+  bottom:0;
+  .pos-center();
+  .upside-down();
+}
+.pos-tl{// top/left
+  top:0;
+  left:0;
+}
+.pos-tr{// top/right
+  top:0;
+  right:0;
+}
+.pos-bl{// bottom/left
+  bottom:0;
+  left:0;
+  .upside-down();
+}
+.pos-br{// bottom/right
+  bottom:0;
+  right:0;
+  .upside-down();
+}
+.pos-lm{// left/middle
+  left:0;
+  .pos-middle();
+}
+.pos-rm{// right/middle
+  right:0;
+  .pos-middle();
+}
+.pos-c13{
+  .pos-center();
+  top:25%/2;
+}
+.pos-c87{
+  .pos-center();
+  bottom:25%/2;
+  .upside-down();
+}
+.pos-c25{
+  .pos-center();
+  .pos-vert25();
+  margin-top:-10px;
+}
+.pos-c75{
+  .pos-center();
+  .pos-vert75();
+  margin-bottom:-10px;
+}
+.pos-l25{
+  left:0;
+  .pos-vert25();
+}
+.pos-r25{
+  right:0;
+  .pos-vert25();
+}
+.pos-l75{
+  left:0;
+  .pos-vert75();
+}
+.pos-r75{
+  right:0;
+  .pos-vert75();
+}
+
+
+/**
+ * Now use the positions to specify where the suit icons should go for each number
+ */
 .value-A{
-  .center{
-    .num-1{
-      top:50%;
-      left:50%;
-      margin-top:-20px;
-      margin-left:-20px;
-      text-align: center;
+  .num-1{
+    .pos-cm();
+    margin-left:-30px;
+    margin-top:-30px;
+    svg{
+      width:60px;
+      height:60px;
     }
   }
 }
 .value-2{
-
+  .num-1{.pos-ct();}
+  .num-2{.pos-cb();}
 }
 .value-3{
-
+  .num-1{.pos-ct();}
+  .num-2{.pos-cm();}
+  .num-3{.pos-cb();}
 }
 .value-4{
-
+  .num-1{.pos-tl();}
+  .num-2{.pos-tr();}
+  .num-3{.pos-bl();}
+  .num-4{.pos-br();}
 }
 .value-5{
-
+  .num-1{.pos-tl();}
+  .num-2{.pos-tr();}
+  .num-3{.pos-bl();}
+  .num-4{.pos-br();}
+  .num-5{.pos-cm();}
 }
 .value-6{
-
+  .num-1{.pos-tl();}
+  .num-2{.pos-tr();}
+  .num-3{.pos-bl();}
+  .num-4{.pos-br();}
+  .num-5{.pos-lm();}
+  .num-6{.pos-rm();}
 }
 .value-7{
-
+  .num-1{.pos-tl();}
+  .num-2{.pos-tr();}
+  .num-3{.pos-bl();}
+  .num-4{.pos-br();}
+  .num-5{.pos-lm();}
+  .num-6{.pos-rm();}
+  .num-7{.pos-c25();}
 }
 .value-8{
-
+  .num-1{.pos-tl();}
+  .num-2{.pos-tr();}
+  .num-3{.pos-bl();}
+  .num-4{.pos-br();}
+  .num-5{.pos-lm();}
+  .num-6{.pos-rm();}
+  .num-7{.pos-c25();}
+  .num-8{.pos-c75();}
 }
 .value-9{
-
+  .num-1{.pos-tl();}
+  .num-2{.pos-tr();}
+  .num-3{.pos-bl();}
+  .num-4{.pos-br();}
+  .num-5{.pos-l25();}
+  .num-6{.pos-r25();}
+  .num-7{.pos-l75();}
+  .num-8{.pos-r75();}
+  .num-9{.pos-cm();}
 }
 .value-10{
-
+  .num-1{.pos-tl();}
+  .num-2{.pos-tr();}
+  .num-3{.pos-bl();}
+  .num-4{.pos-br();}
+  .num-5{.pos-l25();}
+  .num-6{.pos-r25();}
+  .num-7{.pos-l75();}
+  .num-8{.pos-r75();}
+  .num-9{.pos-c13();}
+  .num-10{.pos-c87();}
 }

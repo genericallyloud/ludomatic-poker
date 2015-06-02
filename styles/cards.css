@@ -1,3 +1,6 @@
+.upside-down {
+  -webkit-transform: rotate(180deg);
+}
 .card {
   font-family: "Avenir Next Condensed", helvetica, sans-serif;
 }
@@ -17,6 +20,9 @@
 .corner .value {
   font-size: 24pt;
 }
+.value-10 .corner .value {
+  -webkit-transform: scaleX(0.75);
+}
 .corner .suit svg {
   width: 0.15in;
   height: 0.15in;
@@ -32,11 +38,10 @@
 }
 .center {
   position: absolute;
-  top: 0.2in;
-  left: 0.4in;
-  right: 0.4in;
-  bottom: 0.2in;
-  border: 1px solid black;
+  top: 0.4in;
+  left: 0.5in;
+  right: 0.5in;
+  bottom: 0.4in;
 }
 .center .suit {
   position: absolute;
@@ -45,10 +50,404 @@
   width: 40px;
   height: 40px;
 }
-.value-A .center .num-1 {
-  top: 50%;
+/**
+ * Enumerate all of the reusable positions that a card suit can be
+ */
+.pos-center {
   left: 50%;
-  margin-top: -20px;
   margin-left: -20px;
-  text-align: center;
+}
+.pos-middle {
+  top: 50%;
+  margin-top: -20px;
+}
+.pos-vert25 {
+  top: 25%;
+  margin-top: 10px;
+}
+.pos-vert75 {
+  bottom: 25%;
+  margin-bottom: 10px;
+  -webkit-transform: rotate(180deg);
+}
+.pos-cm {
+  left: 50%;
+  margin-left: -20px;
+  top: 50%;
+  margin-top: -20px;
+}
+.pos-ct {
+  top: 0;
+  left: 50%;
+  margin-left: -20px;
+}
+.pos-cb {
+  bottom: 0;
+  left: 50%;
+  margin-left: -20px;
+  -webkit-transform: rotate(180deg);
+}
+.pos-tl {
+  top: 0;
+  left: 0;
+}
+.pos-tr {
+  top: 0;
+  right: 0;
+}
+.pos-bl {
+  bottom: 0;
+  left: 0;
+  -webkit-transform: rotate(180deg);
+}
+.pos-br {
+  bottom: 0;
+  right: 0;
+  -webkit-transform: rotate(180deg);
+}
+.pos-lm {
+  left: 0;
+  top: 50%;
+  margin-top: -20px;
+}
+.pos-rm {
+  right: 0;
+  top: 50%;
+  margin-top: -20px;
+}
+.pos-c13 {
+  left: 50%;
+  margin-left: -20px;
+  top: 12.5%;
+}
+.pos-c87 {
+  left: 50%;
+  margin-left: -20px;
+  bottom: 12.5%;
+  -webkit-transform: rotate(180deg);
+}
+.pos-c25 {
+  left: 50%;
+  margin-left: -20px;
+  top: 25%;
+  margin-top: 10px;
+  margin-top: -10px;
+}
+.pos-c75 {
+  left: 50%;
+  margin-left: -20px;
+  bottom: 25%;
+  margin-bottom: 10px;
+  -webkit-transform: rotate(180deg);
+  margin-bottom: -10px;
+}
+.pos-l25 {
+  left: 0;
+  top: 25%;
+  margin-top: 10px;
+}
+.pos-r25 {
+  right: 0;
+  top: 25%;
+  margin-top: 10px;
+}
+.pos-l75 {
+  left: 0;
+  bottom: 25%;
+  margin-bottom: 10px;
+  -webkit-transform: rotate(180deg);
+}
+.pos-r75 {
+  right: 0;
+  bottom: 25%;
+  margin-bottom: 10px;
+  -webkit-transform: rotate(180deg);
+}
+/**
+ * Now use the positions to specify where the suit icons should go for each number
+ */
+.value-A .num-1 {
+  left: 50%;
+  margin-left: -20px;
+  top: 50%;
+  margin-top: -20px;
+  margin-left: -30px;
+  margin-top: -30px;
+}
+.value-A .num-1 svg {
+  width: 60px;
+  height: 60px;
+}
+.value-2 .num-1 {
+  top: 0;
+  left: 50%;
+  margin-left: -20px;
+}
+.value-2 .num-2 {
+  bottom: 0;
+  left: 50%;
+  margin-left: -20px;
+  -webkit-transform: rotate(180deg);
+}
+.value-3 .num-1 {
+  top: 0;
+  left: 50%;
+  margin-left: -20px;
+}
+.value-3 .num-2 {
+  left: 50%;
+  margin-left: -20px;
+  top: 50%;
+  margin-top: -20px;
+}
+.value-3 .num-3 {
+  bottom: 0;
+  left: 50%;
+  margin-left: -20px;
+  -webkit-transform: rotate(180deg);
+}
+.value-4 .num-1 {
+  top: 0;
+  left: 0;
+}
+.value-4 .num-2 {
+  top: 0;
+  right: 0;
+}
+.value-4 .num-3 {
+  bottom: 0;
+  left: 0;
+  -webkit-transform: rotate(180deg);
+}
+.value-4 .num-4 {
+  bottom: 0;
+  right: 0;
+  -webkit-transform: rotate(180deg);
+}
+.value-5 .num-1 {
+  top: 0;
+  left: 0;
+}
+.value-5 .num-2 {
+  top: 0;
+  right: 0;
+}
+.value-5 .num-3 {
+  bottom: 0;
+  left: 0;
+  -webkit-transform: rotate(180deg);
+}
+.value-5 .num-4 {
+  bottom: 0;
+  right: 0;
+  -webkit-transform: rotate(180deg);
+}
+.value-5 .num-5 {
+  left: 50%;
+  margin-left: -20px;
+  top: 50%;
+  margin-top: -20px;
+}
+.value-6 .num-1 {
+  top: 0;
+  left: 0;
+}
+.value-6 .num-2 {
+  top: 0;
+  right: 0;
+}
+.value-6 .num-3 {
+  bottom: 0;
+  left: 0;
+  -webkit-transform: rotate(180deg);
+}
+.value-6 .num-4 {
+  bottom: 0;
+  right: 0;
+  -webkit-transform: rotate(180deg);
+}
+.value-6 .num-5 {
+  left: 0;
+  top: 50%;
+  margin-top: -20px;
+}
+.value-6 .num-6 {
+  right: 0;
+  top: 50%;
+  margin-top: -20px;
+}
+.value-7 .num-1 {
+  top: 0;
+  left: 0;
+}
+.value-7 .num-2 {
+  top: 0;
+  right: 0;
+}
+.value-7 .num-3 {
+  bottom: 0;
+  left: 0;
+  -webkit-transform: rotate(180deg);
+}
+.value-7 .num-4 {
+  bottom: 0;
+  right: 0;
+  -webkit-transform: rotate(180deg);
+}
+.value-7 .num-5 {
+  left: 0;
+  top: 50%;
+  margin-top: -20px;
+}
+.value-7 .num-6 {
+  right: 0;
+  top: 50%;
+  margin-top: -20px;
+}
+.value-7 .num-7 {
+  left: 50%;
+  margin-left: -20px;
+  top: 25%;
+  margin-top: 10px;
+  margin-top: -10px;
+}
+.value-8 .num-1 {
+  top: 0;
+  left: 0;
+}
+.value-8 .num-2 {
+  top: 0;
+  right: 0;
+}
+.value-8 .num-3 {
+  bottom: 0;
+  left: 0;
+  -webkit-transform: rotate(180deg);
+}
+.value-8 .num-4 {
+  bottom: 0;
+  right: 0;
+  -webkit-transform: rotate(180deg);
+}
+.value-8 .num-5 {
+  left: 0;
+  top: 50%;
+  margin-top: -20px;
+}
+.value-8 .num-6 {
+  right: 0;
+  top: 50%;
+  margin-top: -20px;
+}
+.value-8 .num-7 {
+  left: 50%;
+  margin-left: -20px;
+  top: 25%;
+  margin-top: 10px;
+  margin-top: -10px;
+}
+.value-8 .num-8 {
+  left: 50%;
+  margin-left: -20px;
+  bottom: 25%;
+  margin-bottom: 10px;
+  -webkit-transform: rotate(180deg);
+  margin-bottom: -10px;
+}
+.value-9 .num-1 {
+  top: 0;
+  left: 0;
+}
+.value-9 .num-2 {
+  top: 0;
+  right: 0;
+}
+.value-9 .num-3 {
+  bottom: 0;
+  left: 0;
+  -webkit-transform: rotate(180deg);
+}
+.value-9 .num-4 {
+  bottom: 0;
+  right: 0;
+  -webkit-transform: rotate(180deg);
+}
+.value-9 .num-5 {
+  left: 0;
+  top: 25%;
+  margin-top: 10px;
+}
+.value-9 .num-6 {
+  right: 0;
+  top: 25%;
+  margin-top: 10px;
+}
+.value-9 .num-7 {
+  left: 0;
+  bottom: 25%;
+  margin-bottom: 10px;
+  -webkit-transform: rotate(180deg);
+}
+.value-9 .num-8 {
+  right: 0;
+  bottom: 25%;
+  margin-bottom: 10px;
+  -webkit-transform: rotate(180deg);
+}
+.value-9 .num-9 {
+  left: 50%;
+  margin-left: -20px;
+  top: 50%;
+  margin-top: -20px;
+}
+.value-10 .num-1 {
+  top: 0;
+  left: 0;
+}
+.value-10 .num-2 {
+  top: 0;
+  right: 0;
+}
+.value-10 .num-3 {
+  bottom: 0;
+  left: 0;
+  -webkit-transform: rotate(180deg);
+}
+.value-10 .num-4 {
+  bottom: 0;
+  right: 0;
+  -webkit-transform: rotate(180deg);
+}
+.value-10 .num-5 {
+  left: 0;
+  top: 25%;
+  margin-top: 10px;
+}
+.value-10 .num-6 {
+  right: 0;
+  top: 25%;
+  margin-top: 10px;
+}
+.value-10 .num-7 {
+  left: 0;
+  bottom: 25%;
+  margin-bottom: 10px;
+  -webkit-transform: rotate(180deg);
+}
+.value-10 .num-8 {
+  right: 0;
+  bottom: 25%;
+  margin-bottom: 10px;
+  -webkit-transform: rotate(180deg);
+}
+.value-10 .num-9 {
+  left: 50%;
+  margin-left: -20px;
+  top: 12.5%;
+}
+.value-10 .num-10 {
+  left: 50%;
+  margin-left: -20px;
+  bottom: 12.5%;
+  -webkit-transform: rotate(180deg);
 }
